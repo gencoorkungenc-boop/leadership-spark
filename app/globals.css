@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #FAF8F4;
+  --dark: #1C1208;
+  --terracotta: #C4622D;
+  --subtle: #8B7355;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: auto !important;
+  min-height: unset !important;
+  background: var(--bg);
+  color: var(--dark);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  height: auto !important;
+  min-height: unset !important;
+  background: var(--bg);
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta-buttons {
+    flex-direction: row !important;
+    justify-content: center;
+  }
+}
+
+/* Conviction Practice — stat two-column layout */
+@media (min-width: 720px) {
+  .stat-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 48px !important;
+    align-items: flex-end !important;
+  }
+}
+
+/* Growth Partnership — typographic contrast block */
+.contrast-text {
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .contrast-text {
+    text-align: center;
+  }
+}
+
+/* Growth Partnership — persona card grid */
+.persona-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .persona-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Growth Partnership — how it works session list */
+.session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Contact — form + sidebar two-column layout */
+@media (min-width: 720px) {
+  .contact-grid {
+    grid-template-columns: 3fr 2fr !important;
+  }
+}
+
+/* Contact — name + email side by side on mobile too */
+@media (max-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}

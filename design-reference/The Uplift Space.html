@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>The Uplift Space — Leadership Spark</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..500,30..100;1,9..144,300..500,30..100&family=EB+Garamond:ital,wght@0,400..500;1,400..500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #1a1410; min-height: 100vh; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  @keyframes sparkFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .stage { min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 48px 20px; background: radial-gradient(1200px 800px at 20% 0%, rgba(255, 210, 160, 0.04), transparent 60%), radial-gradient(900px 600px at 90% 100%, rgba(255, 180, 140, 0.03), transparent 60%), #1a1410; }
+  @media (max-width: 700px) { .stage { padding: 0; background: #fdf8ee; } .device-wrap { display: none; } }
+  .device-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .device-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255, 240, 220, 0.35); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="frames/ios-frame.jsx"></script>
+<script type="text/babel" src="components/home.jsx"></script>
+<script type="text/babel" src="components/uplift.jsx"></script>
+<script type="text/babel">
+  function App() {
+    const tweaks = window.TWEAK_DEFAULS;
+    const [isMobile, setIsMobile] = React.useState(typeof window !== 'undefined' && window.innerWidth <= 700);
+    React.useEffect(() => {
+      const onR = () => setIsMobile(window.innerWidth <= 700);
+      window.addEventListener('resize', onR);
+      return () => window.removeEventListener('resize', onR);
+    }, []);
+    const page = <window.UpliftPage tweaks={tweaks} />;
+    if (isMobile) return <div style={{ minHeight: '100vh', background: '#fdf8ee' }}>{page}</div>;
+    return (
+      <div className="stage">
+        <div className="device-wrap">
+          <window.IOSDevice width={390} height={844}>
+            <div style={{ paddingTop: 44, height: '100%', overflow: 'auto' }}>{page}</div>
+          </window.IOSDevice>
+          <div className="device-label">Leadership Spark — The Uplift Space</div>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

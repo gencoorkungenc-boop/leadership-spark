@@ -128,11 +128,10 @@ export default function Contact() {
                   style={{
                     display: "block",
                     background: CREAM,
-                    borderRadius: "12px",
+                    borderRadius: "0 12px 12px 0",
                     padding: "20px 24px",
                     textDecoration: "none",
                     borderLeft: `3px solid ${TERRA}`,
-                    borderRadius: "0 12px 12px 0",
                   }}
                 >
                   <p

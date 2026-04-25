@@ -72,25 +72,25 @@ export default function SiteHeader({ current }: { current: string }) {
               </Link>
             </li>
           ))}
-          <li>
-            <Link
-              href="https://www.linkedin.com/in/gencoorkun/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="linkedin-link"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                color: "#1C1208",
-                opacity: 0.55,
-              }}
-              aria-label="LinkedIn"
-            >
-              <LinkedInIcon />
-            </Link>
-          </li>
         </ul>
       </nav>
+      <div style={{ marginTop: "16px" }}>
+        <Link
+          href="https://www.linkedin.com/in/gencoorkun/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="linkedin-link"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            color: "#1C1208",
+            opacity: 0.4,
+          }}
+          aria-label="LinkedIn"
+        >
+          <LinkedInIcon />
+        </Link>
+      </div>
 
       <div
         style={{

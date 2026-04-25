@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import AnimatedStat from "./AnimatedStat";
 import FadeInStatements from "./FadeInStatements";
+
+export const metadata: Metadata = {
+  title: "The Conviction Practice — Leadership Spark",
+  description: "A structured engagement for senior leaders and executives who have more to say than they are currently saying. Leadership communication coaching and advisory.",
+};
 import StrikethroughItems from "./StrikethroughItems";
 import ScrollProgress from "./ScrollProgress";
 

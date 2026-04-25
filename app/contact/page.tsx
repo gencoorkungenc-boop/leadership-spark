@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import ContactForm from "./ContactForm";
+
+export const metadata: Metadata = {
+  title: "Let's Talk — Leadership Spark",
+  description: "Start a conversation with Leadership Spark. The first conversation is always free.",
+};
 
 const CREAM = "#F5F0E8";
 const WARM_WHITE = "#FFFFFF";

@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import ScrollProgress from "./ScrollProgress";
 import StrikethroughItems from "./StrikethroughItems";
+
+export const metadata: Metadata = {
+  title: "The Growth Partnership — Leadership Spark",
+  description: "Commercial coaching and advisory for founders and business owners. GTM strategy, territory design, pipeline discipline. Emerging markets expertise across Europe, the Middle East and Africa.",
+};
 
 const col: React.CSSProperties = {
   maxWidth: "760px",

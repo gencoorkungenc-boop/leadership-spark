@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+
+export const metadata: Metadata = {
+  title: "The Story — Leadership Spark",
+  description: "Genco Orkun Genc. Nearly 20 years in global tech sales. Erickson-trained coach. Turkey to Dublin. The career break that became a business.",
+};
 
 const labelStyle: React.CSSProperties = {
   fontFamily: "'Inter', sans-serif",

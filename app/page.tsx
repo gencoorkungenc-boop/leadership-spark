@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import PathCard from "./PathCard";
 import SiteHeader from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
+
+export const metadata: Metadata = {
+  title: "Leadership Spark — What brings you here today?",
+  description: "Leadership Spark works with senior leaders, founders and professionals who are ready to move. Coaching, advisory and leadership communication. Based in Dublin, working globally.",
+};
 
 const cards = [
   {

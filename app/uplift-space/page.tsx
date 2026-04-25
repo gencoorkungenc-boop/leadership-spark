@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+
+export const metadata: Metadata = {
+  title: "The Uplift Space — Leadership Spark",
+  description: "Career coaching for professionals in transition. Erickson-trained coaching with 20 years of commercial instinct. Career pivots, promotions, new countries, career breaks.",
+};
 
 /* ─── Design tokens ─── */
 const CREAM = "#F5F0E8";

@@ -105,7 +105,7 @@ export default function TheStory() {
             fontWeight: 500,
           }}
         >
-          Genco — Dublin, 2026
+          Genco, Dublin, 2026
         </p>
       </div>
 

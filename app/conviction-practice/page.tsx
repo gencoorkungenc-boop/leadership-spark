@@ -143,7 +143,7 @@ export default function ConvictionPractice() {
         <AnimatedStat
           target={80}
           description="of employees worldwide are not engaged at work."
-          source="Gallup — 2026"
+          source="Gallup, 2026"
         />
 
         <div style={{ height: "1px", background: "rgba(28,18,8,0.1)", margin: "0 24px" }} />
@@ -151,7 +151,7 @@ export default function ConvictionPractice() {
         <AnimatedStat
           target={68}
           description="of people globally worry their business leaders are misleading them."
-          source="Edelman — 2025"
+          source="Edelman, 2025"
         />
       </section>
 
@@ -226,7 +226,7 @@ export default function ConvictionPractice() {
                   gap: "12px",
                 }}
               >
-                <span style={{ flexShrink: 0, marginTop: "2px" }}>—</span>
+                <span style={{ flexShrink: 0, marginTop: "2px", color: "#C4622D" }}>✦</span>
                 <span>{line}</span>
               </p>
             ))}
@@ -391,6 +391,22 @@ export default function ConvictionPractice() {
         >
           Book your free consultation →
         </Link>
+        <div style={{ marginTop: "32px" }}>
+          <Link
+            href="/"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "13px",
+              fontWeight: 400,
+              color: "#FAF8F4",
+              opacity: 0.4,
+              textDecoration: "none",
+              letterSpacing: "0.04em",
+            }}
+          >
+            ← Back to all paths
+          </Link>
+        </div>
       </section>
 
       <SiteFooter />

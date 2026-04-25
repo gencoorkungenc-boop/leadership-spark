@@ -94,7 +94,7 @@ const bringItems = [
   "A promotion that feels within reach but somehow keeps not happening.",
   "A career break you keep thinking about but have not let yourself take seriously yet.",
   "A move to a new city, a new country, a new industry.",
-  "A quiet voice that keeps asking — is there more than this?",
+  "A quiet voice that keeps asking: is there more than this?",
 ];
 
 const whatThisIsCards = [
@@ -429,6 +429,22 @@ export default function UpliftSpace() {
         >
           Get in touch →
         </Link>
+        <div style={{ marginTop: "32px" }}>
+          <Link
+            href="/"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "13px",
+              fontWeight: 400,
+              color: "#FAF8F4",
+              opacity: 0.4,
+              textDecoration: "none",
+              letterSpacing: "0.04em",
+            }}
+          >
+            ← Back to all paths
+          </Link>
+        </div>
       </section>
 
       <SiteFooter />

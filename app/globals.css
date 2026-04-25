@@ -93,3 +93,14 @@ body {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* LinkedIn icon hover */
+.linkedin-link:hover {
+  opacity: 1 !important;
+  color: #C4622D !important;
+}
+
+.linkedin-link-footer:hover {
+  opacity: 0.8 !important;
+  color: #C4622D !important;
+}

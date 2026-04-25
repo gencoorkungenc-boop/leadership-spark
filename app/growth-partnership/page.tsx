@@ -60,7 +60,7 @@ const personas = [
   },
   {
     title: "The CEO",
-    body: "Built something technically brilliant. Needs a commercial partner who speaks both languages — founder and operator.",
+    body: "Built something technically brilliant. Needs a commercial partner who speaks both languages, founder and operator.",
   },
   {
     title: "The Company",
@@ -638,6 +638,22 @@ export default function GrowthPartnership() {
         >
           Contact Genco →
         </Link>
+        <div style={{ marginTop: "32px" }}>
+          <Link
+            href="/"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: "13px",
+              fontWeight: 400,
+              color: "#FAF8F4",
+              opacity: 0.4,
+              textDecoration: "none",
+              letterSpacing: "0.04em",
+            }}
+          >
+            ← Back to all paths
+          </Link>
+        </div>
       </section>
 
       <SiteFooter />

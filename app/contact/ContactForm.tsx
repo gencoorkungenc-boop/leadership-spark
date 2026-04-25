@@ -9,9 +9,9 @@ const CREAM = "#F5F0E8";
 
 const pathwayOptions = [
   { value: "", label: "I'm not sure yet" },
-  { value: "conviction-practice", label: "The Conviction Practice — senior leadership presence" },
-  { value: "growth-partnership", label: "The Growth Partnership — commercial growth" },
-  { value: "uplift-space", label: "The Uplift Space — career transition or change" },
+  { value: "conviction-practice", label: "The Conviction Practice: senior leadership presence" },
+  { value: "growth-partnership", label: "The Growth Partnership: commercial growth" },
+  { value: "uplift-space", label: "The Uplift Space: career transition or change" },
 ];
 
 const inputStyle: React.CSSProperties = {
@@ -169,7 +169,7 @@ export default function ContactForm() {
 
       {status === "error" && (
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: TERRA, margin: 0 }}>
-          Something went wrong — please try again or email gencoorkungenc@gmail.com directly.
+          Something went wrong. Please try again or email gencoorkungenc@gmail.com directly.
         </p>
       )}
 

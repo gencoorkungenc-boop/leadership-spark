@@ -74,7 +74,7 @@ export default function SiteHeader({ current }: { current: string }) {
           ))}
           <li>
             <Link
-              href="https://www.linkedin.com/in/gencoorkungenc/"
+              href="https://www.linkedin.com/in/gencoorkun/"
               target="_blank"
               rel="noopener noreferrer"
               className="linkedin-link"

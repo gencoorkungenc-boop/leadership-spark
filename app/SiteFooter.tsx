@@ -30,7 +30,7 @@ export default function SiteFooter() {
           © 2026 Leadership Spark
         </p>
         <Link
-          href="https://www.linkedin.com/in/gencoorkungenc/"
+          href="https://www.linkedin.com/in/gencoorkun/"
           target="_blank"
           rel="noopener noreferrer"
           className="linkedin-link-footer"

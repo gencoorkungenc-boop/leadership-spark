@@ -39,7 +39,7 @@ const labelStyle: React.CSSProperties = {
   marginBottom: "8px",
 };
 
-type Status = "idle" | "sending" | "sent";
+type Status = "idle" | "sending" | "sent" | "error";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -48,10 +48,19 @@ export default function ContactForm() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
-    setTimeout(() => setStatus("sent"), 600);
+    try {
+      const res = await fetch("https://formspree.io/f/mgordgew", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, pathway, message }),
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "sent") {
@@ -157,6 +166,12 @@ export default function ContactForm() {
           placeholder="A few sentences is enough. There's no wrong answer here."
         />
       </div>
+
+      {status === "error" && (
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: TERRA, margin: 0 }}>
+          Something went wrong — please try again or email gencoorkungenc@gmail.com directly.
+        </p>
+      )}
 
       <button
         type="submit"

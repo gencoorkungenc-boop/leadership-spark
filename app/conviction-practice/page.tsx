@@ -373,7 +373,9 @@ export default function ConvictionPractice() {
           Thirty minutes. No pitch. No deck. Just a conversation.
         </p>
         <Link
-          href="/contact"
+          href="https://calendar.app.google/NtLndZXhVyvNLvT86"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             display: "inline-block",
             background: "#C4622D",

@@ -33,43 +33,26 @@ export default function StrikethroughItems() {
   return (
     <div ref={ref} style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
       {items.map((item, i) => (
-        <div
+        <p
           key={item}
           style={{
-            position: "relative",
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
+            fontWeight: 400,
+            color: "#FAF8F4",
+            margin: 0,
+            lineHeight: 1.3,
+            textDecoration: "line-through",
+            textDecorationColor: phase === "struck" ? "#C4622D" : "transparent",
+            textDecorationThickness: "2px",
+            textDecorationSkipInk: "none",
             opacity: phase === "hidden" ? 0 : 1,
             transform: phase === "hidden" ? "translateY(12px)" : "translateY(0)",
-            transition: `opacity 0.5s ease-out ${i * 120}ms, transform 0.5s ease-out ${i * 120}ms`,
+            transition: `opacity 0.5s ease-out ${i * 120}ms, transform 0.5s ease-out ${i * 120}ms, text-decoration-color 0.45s ease-out ${i * 140 + 100}ms`,
           }}
         >
-          <p
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
-              fontWeight: 400,
-              color: "#FAF8F4",
-              margin: 0,
-              lineHeight: 1.3,
-              display: "inline",
-            }}
-          >
-            {item}
-          </p>
-          <span
-            style={{
-              position: "absolute",
-              left: 0,
-              top: "52%",
-              height: "2px",
-              background: "#C4622D",
-              transform: "translateY(-50%)",
-              width: phase === "struck" ? "100%" : "0%",
-              transition: `width 0.45s ease-out ${i * 140 + 100}ms`,
-              display: "block",
-              pointerEvents: "none",
-            }}
-          />
-        </div>
+          {item}
+        </p>
       ))}
     </div>
   );

@@ -17,38 +17,39 @@ export default function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: 'serif',
-          gap: 24,
+          gap: '32px',
         }}
       >
-        <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <path d="M50 8 L54 46 L92 50 L54 54 L50 92 L46 54 L8 50 L46 46 Z" fill="#C4622D"/>
         </svg>
         <div
           style={{
-            fontSize: 52,
-            fontWeight: 700,
+            fontSize: 64,
+            fontWeight: 800,
             color: '#1C1208',
-            letterSpacing: '0.12em',
+            letterSpacing: '0.15em',
+            fontFamily: 'sans-serif',
           }}
         >
           LEADERSHIP SPARK
         </div>
         <div
           style={{
-            fontSize: 26,
+            fontSize: 28,
             color: '#C4622D',
+            fontFamily: 'serif',
             fontStyle: 'italic',
-            marginTop: 8,
           }}
         >
           What brings you here today?
         </div>
         <div
           style={{
-            fontSize: 18,
+            fontSize: 20,
             color: '#8B7355',
-            marginTop: 12,
+            fontFamily: 'sans-serif',
+            marginTop: '8px',
           }}
         >
           leadershipspark.co

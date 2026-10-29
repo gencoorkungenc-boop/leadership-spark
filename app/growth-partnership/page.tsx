@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
 import ScrollProgress from "./ScrollProgress";
 import StrikethroughItems from "./StrikethroughItems";
+import StatLine from "./StatLine";
+import Reveal from "./Reveal";
 
 export const metadata: Metadata = {
-  title: "The Growth Partnership — Leadership Spark",
-  description: "Commercial coaching and advisory for founders and business owners. GTM strategy, territory design, pipeline discipline. Emerging markets expertise across Europe, the Middle East and Africa.",
+  title: "The Growth Partnership | Leadership Spark",
+  description:
+    "Leadership Spark GTM. Genco Orkun Genc and Emir Ergun build the B2B selling engine inside your company, with you and your team. It starts with a two-week Discovery.",
 };
 
-const col: React.CSSProperties = {
-  maxWidth: "760px",
-  margin: "0 auto",
-  padding: "0 24px",
-};
+const MAILTO =
+  "mailto:genco@leadershipspark.co,emir@leadershipspark.co?subject=How%20we%20sell%20today";
 
 const label: React.CSSProperties = {
   fontFamily: "'Inter', sans-serif",
@@ -23,17 +24,8 @@ const label: React.CSSProperties = {
   letterSpacing: "0.2em",
   textTransform: "uppercase",
   color: "#C4622D",
-  marginBottom: "40px",
-  opacity: 0.85,
-};
-
-const body: React.CSSProperties = {
-  fontFamily: "'Inter', sans-serif",
-  fontSize: "clamp(16px, 1.8vw, 17px)",
-  fontWeight: 300,
-  lineHeight: 1.85,
-  color: "#1C1208",
-  opacity: 0.85,
+  margin: "0 0 40px",
+  opacity: 0.9,
 };
 
 const Divider = () => (
@@ -46,31 +38,73 @@ const SparkDivider = ({ bg = "#FAF8F4" }: { bg?: string }) => (
   </div>
 );
 
-const sessions = [
-  { n: "01", title: "Territory design" },
-  { n: "02", title: "ICP definition" },
-  { n: "03", title: "Outbound motion" },
-  { n: "04", title: "Inbound architecture" },
-  { n: "05", title: "Forecast discipline" },
-  { n: "06", title: "Market entry" },
+const pains = [
+  {
+    tag: "Who decides to buy",
+    title: "The deal goes quiet",
+    body: "Your first meetings go well. Then the deal goes quiet somewhere you can't see.",
+  },
+  {
+    tag: "How you reach them",
+    title: "Strategy is improvised",
+    body: "You know the next market or segment matters. You have ideas but don't know which one.",
+  },
+  {
+    tag: "Who is selling",
+    title: "No sales team yet",
+    body: "You are the sales team. Hiring is an idea, but who to hire and how to onboard is guesswork.",
+  },
+  {
+    tag: "What you measure",
+    title: "Numbers in your head",
+    body: "The pipeline lives in your head and a spreadsheet. Nobody else can run or measure it.",
+  },
 ];
 
-const personas = [
+const partners = [
   {
-    title: "The Founder",
-    body: "Product-market fit confirmed. Now staring at the gap between what the product can do and what the pipeline actually shows.",
+    name: "Genco Orkun Genc",
+    img: "/images/gtm-genco.jpg",
+    years: "20 years in B2B sales",
+    bio: "Closing deals, leading teams and scaling revenue. At LinkedIn, managed enterprise accounts, then built a new market that grew 6x in 3 years. At Pluralsight, led commercial sales across 50+ countries, from Poland to South Africa to MENA.",
   },
   {
-    title: "The Business Owner",
-    body: "Winning on relationships and referrals. Knows that won't scale.",
+    name: "Emir Ergun",
+    img: "/images/gtm-emir.jpg",
+    years: "16 years in B2B sales",
+    bio: "On the strategy and operations side. Turns messy commercial problems into plans sales teams can run. At LinkedIn, led the go-to-market for 3 major product launches. At New Relic, ran strategic programs through the $1B scale-up and the shift to consumption pricing.",
+  },
+];
+
+const builds = [
+  { title: "GTM strategy", line: "What to sell, to whom, and in what order." },
+  { title: "New markets & segments", line: "Where to expand and how to land there." },
+  { title: "Outbound & sales motion", line: "Your way of selling, from start to finish." },
+  { title: "Solution selling", line: "Leading with the buyer's problem." },
+  { title: "Pipeline & forecast discipline", line: "An accurate read of what will close." },
+  { title: "Sales systems & reporting", line: "CRM, numbers, signal vs. noise." },
+  { title: "Building a sales team", line: "Hiring, onboarding and coaching." },
+  { title: "Investor-facing growth narrative", line: "A compelling story with numbers." },
+];
+
+const paths = [
+  {
+    name: "Build",
+    what: "GTM strategy & sales motion",
+    weeks: "8 to 10 weeks",
+    body: "Who to target, in what order, what to say, and what to measure. We build it with you.",
   },
   {
-    title: "The CEO",
-    body: "Built something technically brilliant. Needs a commercial partner who speaks both languages, founder and operator.",
+    name: "Expand",
+    what: "New market or segment",
+    weeks: "4 to 6 weeks",
+    body: "Which market next, and what has to be true before the first sale there.",
   },
   {
-    title: "The Company",
-    body: "Ready to move into a new market. Needs someone who has opened territories from scratch.",
+    name: "Coach",
+    what: "Sales team setup & coaching",
+    weeks: "6 to 8 weeks",
+    body: "A hiring profile and interview plan for your first salespeople, then coaching on live deals.",
   },
 ];
 
@@ -81,26 +115,9 @@ export default function GrowthPartnership() {
       <SiteHeader current="" />
       <Divider />
 
-      {/* ─── HERO — pure black ─── */}
-      <section
-        style={{
-          background: "#0A0A0A",
-          padding: "120px 24px 112px",
-          textAlign: "center",
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: "11px",
-            fontWeight: 600,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "#C4622D",
-            marginBottom: "48px",
-            opacity: 0.9,
-          }}
-        >
+      {/* HERO */}
+      <section style={{ background: "#0A0A0A", padding: "120px 24px 104px", textAlign: "center" }}>
+        <p style={{ ...label, letterSpacing: "0.22em", marginBottom: "48px" }}>
           The Growth Partnership
         </p>
 
@@ -109,510 +126,508 @@ export default function GrowthPartnership() {
             fontFamily: "'Playfair Display', serif",
             lineHeight: 1.08,
             letterSpacing: "-0.02em",
-            margin: "0 auto 40px",
-            maxWidth: "860px",
+            margin: "0 auto 36px",
+            maxWidth: "900px",
           }}
         >
           <span
             style={{
               display: "block",
-              fontSize: "clamp(2.4rem, 8vw, 5rem)",
-              fontWeight: 300,
+              fontSize: "clamp(2.8rem, 9vw, 5.6rem)",
+              fontWeight: 700,
               color: "#FAF8F4",
-              opacity: 0.4,
+              marginBottom: "14px",
             }}
           >
-            Most founders are exceptional
+            You built the product.
           </span>
           <span
             style={{
               display: "block",
-              fontSize: "clamp(2.8rem, 9.5vw, 5.8rem)",
-              fontWeight: 700,
-              color: "#FAF8F4",
-              marginBottom: "16px",
+              fontSize: "clamp(1.5rem, 4.2vw, 2.6rem)",
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: "#C4622D",
+              lineHeight: 1.25,
             }}
           >
-            at building.
+            Selling it to companies is a different craft.
           </span>
         </h1>
 
         <p
           style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(1.2rem, 3vw, 1.6rem)",
-            fontStyle: "italic",
-            fontWeight: 400,
-            color: "#C4622D",
-            lineHeight: 1.45,
-            margin: 0,
-            maxWidth: "680px",
-            marginLeft: "auto",
-            marginRight: "auto",
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "clamp(16px, 1.9vw, 18px)",
+            fontWeight: 300,
+            color: "#FAF8F4",
+            opacity: 0.72,
+            lineHeight: 1.75,
+            maxWidth: "560px",
+            margin: "0 auto 56px",
           }}
         >
-          The commercial motion is a different craft.
+          Leadership Spark GTM builds the B2B selling engine inside your company, with you and your team.
         </p>
+
+        <a href="#partners" className="gtm-duo">
+          <span className="gtm-duo-faces">
+            <Image src="/images/gtm-genco.jpg" alt="" width={44} height={44} />
+            <Image src="/images/gtm-emir.jpg" alt="" width={44} height={44} />
+          </span>
+          <span>With Genco &amp; Emir, founding partners</span>
+        </a>
       </section>
 
-
-      {/* ─── TYPOGRAPHIC CONTRAST — cream, stacked statements ─── */}
-      <section style={{ background: "#F5F0E8", padding: "96px 24px" }}>
-        <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-
-          {/* Statement 1 */}
-          <div className="contrast-text">
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "11px",
-              fontWeight: 600,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#C4622D",
-              marginBottom: "24px",
-              opacity: 0.75,
-            }}>
-              Without the right system
-            </p>
-            <p style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.4rem, 6vw, 3rem)",
-              fontWeight: 500,
-              color: "#1C1208",
-              lineHeight: 1.15,
-              margin: "0 0 8px",
-            }}>
-              Brilliant product.
-            </p>
-            <p style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.4rem, 6vw, 3rem)",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: "#C4622D",
-              lineHeight: 1.15,
-              margin: 0,
-            }}>
-              Stays small.
-            </p>
-          </div>
-
-          {/* Spacer + divider */}
-          <div style={{ height: "80px" }} />
-          <div style={{ height: "1px", background: "#C4622D", opacity: 0.3, width: "100%" }} />
-          <div style={{ height: "80px" }} />
-
-          {/* Statement 2 */}
-          <div className="contrast-text">
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "11px",
-              fontWeight: 600,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "#C4622D",
-              marginBottom: "24px",
-              opacity: 0.75,
-            }}>
-              With the right system
-            </p>
-            <p style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.4rem, 6vw, 3rem)",
-              fontWeight: 500,
-              color: "#1C1208",
-              lineHeight: 1.15,
-              margin: "0 0 8px",
-            }}>
-              Brilliant product.
-            </p>
-            <p style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.4rem, 6vw, 3rem)",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: "#C4622D",
-              lineHeight: 1.15,
-              margin: 0,
-            }}>
-              Scales.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      <Divider />
-
-      {/* ─── WHAT YOU ARE PROBABLY EXPERIENCING — dark, numbered ─── */}
-      <section style={{ background: "#0A0A0A", padding: "104px 0 0" }}>
-        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "0 24px 0" }}>
-          <p style={{ ...label, color: "#C4622D", marginBottom: "56px" }}>
-            What You Are Probably Experiencing
-          </p>
-        </div>
-
-        {/* Numbered statements with thin rules */}
-        {[
-          { n: "01", text: "Your pipeline is unpredictable." },
-          { n: "02", text: "Your team is selling on instinct rather than process." },
-          { n: "03", text: "Forecasts feel like educated guesses." },
-          {
-            n: "04",
-            text: "You are not sure if the problem is messaging, targeting, motion or all three.",
-          },
-        ].map(({ n, text }, i) => (
-          <div key={n}>
-            {i > 0 && (
-              <div style={{ height: "1px", background: "#C4622D", opacity: 0.3 }} />
-            )}
-            <div
+      {/* THE BUYER CHANGED */}
+      <section style={{ background: "#F5F0E8", padding: "112px 24px 72px" }}>
+        <div style={{ maxWidth: "1040px", margin: "0 auto" }}>
+          <Reveal>
+            <p
               style={{
-                maxWidth: "860px",
-                margin: "0 auto",
-                padding: "48px 24px",
-                display: "flex",
-                alignItems: "baseline",
-                gap: "32px",
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(2rem, 5.4vw, 3.4rem)",
+                fontWeight: 500,
+                lineHeight: 1.12,
+                letterSpacing: "-0.01em",
+                maxWidth: "820px",
+                margin: "0 0 24px",
               }}
             >
-              <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  color: "#C4622D",
-                  flexShrink: 0,
-                  opacity: 0.9,
-                }}
-              >
-                {n}
-              </span>
-              <p
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "clamp(1.5rem, 3.5vw, 2rem)",
-                  fontWeight: 500,
-                  color: "#FAF8F4",
-                  lineHeight: 1.25,
-                  margin: 0,
-                }}
-              >
-                {text}
-              </p>
-            </div>
-          </div>
-        ))}
+              Your buyer changed more than your{" "}
+              <em style={{ color: "#C4622D", fontWeight: 400 }}>product</em> did.
+            </p>
+            <p
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "clamp(16px, 1.8vw, 17px)",
+                fontWeight: 300,
+                lineHeight: 1.85,
+                opacity: 0.8,
+                maxWidth: "560px",
+                margin: "0 0 32px",
+              }}
+            >
+              Selling to companies got complicated on every level. The product earns the meeting.
+              How you sell decides the deal.
+            </p>
+          </Reveal>
 
-        {/* Final line — terracotta italic, centred, below last rule */}
-        <div style={{ height: "1px", background: "#C4622D", opacity: 0.3 }} />
-        <div style={{ padding: "56px 24px 104px", textAlign: "center" }}>
-          <p
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.2rem, 2.5vw, 1.5rem)",
-              fontStyle: "italic",
-              fontWeight: 400,
-              color: "#C4622D",
-              margin: 0,
-              lineHeight: 1.4,
-            }}
-          >
-            Welcome to the stage every founder hits.
-          </p>
-        </div>
-      </section>
-
-      <SparkDivider bg="#0A0A0A" />
-
-      {/* ─── WHAT THIS IS NOT — pure black ─── */}
-      <section style={{ background: "#0A0A0A", padding: "104px 24px" }}>
-        <div style={{ ...col, maxWidth: "860px" }}>
-          <p style={{ ...label, color: "#C4622D" }}>What This Is Not</p>
-          <StrikethroughItems />
+          <StatLine
+            target={2}
+            suffix="x"
+            description="Won deals have twice as many buyer-side contacts as lost ones."
+            source="Gong Labs · 1.8 million deals · 2025"
+          />
+          <div style={{ height: "1px", background: "#C4622D", opacity: 0.3 }} />
+          <StatLine
+            target={6.2}
+            decimals={1}
+            suffix="months"
+            description="How long a new sales hire takes to ramp, the longest on record. Only 48% of reps hit quota."
+            source="The Bridge Group · 2026"
+          />
         </div>
       </section>
 
       <Divider />
 
-      {/* ─── WHAT THIS IS — cream, large Playfair ─── */}
-      <section style={{ background: "#FAF8F4", padding: "80px 24px" }}>
-        <div style={col}>
-          <p style={label}>What This Is</p>
-          <p
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.3rem, 3vw, 1.5rem)",
-              fontWeight: 500,
-              lineHeight: 1.55,
-              color: "#1C1208",
-              marginBottom: "48px",
-            }}
-          >
-            A working partnership with someone who has spent twenty years building GTM systems in
-            markets that punish generic playbooks.
-          </p>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "32px", marginBottom: "56px" }}>
-            {[
-              "Coaching when you need space to think through the hard decisions.",
-              "Mentoring when you need direction from someone who has been there.",
-              "Consulting when you need a plan you can hand to your team.",
-            ].map((line) => (
-              <p
-                key={line}
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "clamp(1.2rem, 2.5vw, 1.375rem)",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                  color: "#C4622D",
-                  lineHeight: 1.5,
-                  margin: 0,
-                }}
-              >
-                {line}
-              </p>
-            ))}
-          </div>
-
-          <p
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.3rem, 3vw, 1.75rem)",
-              fontWeight: 700,
-              color: "#1C1208",
-              lineHeight: 1.3,
-              margin: 0,
-            }}
-          >
-            All three. In the same room. No overhead.
-          </p>
-        </div>
-      </section>
-
-      <SparkDivider />
-
-      {/* ─── WHO THIS IS FOR — cream, 2×2 persona cards ─── */}
-      <section style={{ background: "#F5F0E8", padding: "104px 24px" }}>
-        <div style={{ maxWidth: "860px", margin: "0 auto" }}>
-          <p style={{ ...label, padding: "0 0 0 0" }}>Who This Is For</p>
-          <div className="persona-grid">
-            {personas.map(({ title, body: desc }) => (
-              <div
-                key={title}
-                style={{
-                  background: "#FAF8F4",
-                  borderTop: "3px solid #C4622D",
-                  padding: "36px 32px 40px",
-                  borderRadius: "2px",
-                }}
-              >
+      {/* SOUND FAMILIAR */}
+      <section style={{ background: "#0A0A0A", padding: "104px 24px 0" }}>
+        <div style={{ maxWidth: "980px", margin: "0 auto" }}>
+          <p style={{ ...label, marginBottom: "56px" }}>Sound familiar?</p>
+          <div className="gtm-pain-grid">
+            {pains.map((p, i) => (
+              <Reveal key={p.title} delay={i * 90} className="gtm-pain">
+                <p
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "#FAF8F4",
+                    opacity: 0.45,
+                    margin: "0 0 20px",
+                  }}
+                >
+                  {p.tag}
+                </p>
                 <p
                   style={{
                     fontFamily: "'Playfair Display', serif",
-                    fontSize: "clamp(1.1rem, 2.2vw, 1.3rem)",
-                    fontStyle: "italic",
+                    fontSize: "clamp(1.5rem, 3vw, 1.9rem)",
                     fontWeight: 500,
-                    color: "#1C1208",
-                    marginBottom: "16px",
-                    lineHeight: 1.3,
+                    color: "#FAF8F4",
+                    lineHeight: 1.2,
+                    margin: "0 0 16px",
                   }}
                 >
-                  {title}
+                  {p.title}
                 </p>
                 <p
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "15px",
                     fontWeight: 300,
-                    color: "#1C1208",
+                    color: "#FAF8F4",
+                    opacity: 0.7,
                     lineHeight: 1.75,
-                    opacity: 0.8,
                     margin: 0,
                   }}
                 >
-                  {desc}
+                  {p.body}
                 </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
-      </section>
 
-      <Divider />
-
-      {/* ─── THE PROOF — dark #1C1208 ─── */}
-      <section style={{ background: "#1C1208", padding: "104px 24px" }}>
-        <div style={{ ...col, maxWidth: "760px" }}>
+        <div style={{ height: "1px", background: "#C4622D", opacity: 0.3, marginTop: "96px" }} />
+        <div style={{ padding: "64px 24px 104px", textAlign: "center" }}>
           <p
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.4rem, 3.5vw, 2rem)",
-              fontWeight: 500,
-              color: "#FAF8F4",
-              lineHeight: 1.35,
-              marginBottom: "32px",
-            }}
-          >
-            Twenty years building commercial systems across markets that punish generic playbooks.
-          </p>
-
-          <p
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.2rem, 3vw, 1.6rem)",
+              fontSize: "clamp(1.25rem, 2.8vw, 1.7rem)",
               fontStyle: "italic",
               fontWeight: 400,
               color: "#C4622D",
-              lineHeight: 1.4,
-              marginBottom: "36px",
+              lineHeight: 1.45,
+              maxWidth: "720px",
+              margin: "0 auto",
             }}
           >
-            Emerging markets across Europe, the Middle East and Africa.
+            Build the B2B selling muscle early and it compounds. Leave it for later and you find
+            out how expensive later is.
           </p>
+        </div>
+      </section>
 
-          <p
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "clamp(16px, 1.8vw, 17px)",
-              fontWeight: 300,
-              color: "#FAF8F4",
-              opacity: 0.75,
-              lineHeight: 1.85,
-              marginBottom: "48px",
-            }}
-          >
-            Markets where winning requires specific resources, cultural fluency and a playbook
-            built for the ground you are actually standing on.
-          </p>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "32px", marginBottom: "64px" }}>
-            {[
-              "At LinkedIn, a small team became the fastest growing segment in the company's growth markets division.",
-              "At Pluralsight, a territory spanning 50 countries delivered consistent year-over-year growth from a standing start.",
-            ].map((line) => (
-              <p
-                key={line}
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "18px",
-                  fontWeight: 300,
-                  color: "#FAF8F4",
-                  opacity: 0.8,
-                  lineHeight: 1.8,
-                  margin: 0,
-                }}
-              >
-                {line}
-              </p>
-            ))}
-          </div>
-
+      {/* PARTNERS */}
+      <section id="partners" style={{ background: "#F5F0E8", padding: "112px 24px" }}>
+        <div style={{ maxWidth: "1040px", margin: "0 auto" }}>
+          <p style={label}>Who&apos;s behind this</p>
           <p
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.2rem, 3vw, 1.6rem)",
+              fontSize: "clamp(1.9rem, 4.6vw, 3rem)",
               fontWeight: 500,
-              color: "#FAF8F4",
-              lineHeight: 1.4,
-              margin: 0,
-              borderTop: "1px solid rgba(250,248,244,0.12)",
-              paddingTop: "48px",
+              lineHeight: 1.15,
+              letterSpacing: "-0.01em",
+              maxWidth: "760px",
+              margin: "0 0 72px",
             }}
           >
-            Pipeline does not come from effort alone. It comes from a system. That system is what
-            we build together.
+            We build it inside your company,{" "}
+            <em style={{ color: "#C4622D", fontWeight: 400 }}>with you and your team.</em>
           </p>
+
+          <div className="gtm-partners">
+            {partners.map((p, i) => (
+              <Reveal key={p.name} delay={i * 150} className="gtm-partner">
+                <div className="gtm-portrait">
+                  <Image
+                    src={p.img}
+                    alt={p.name}
+                    fill
+                    sizes="(min-width: 760px) 440px, 100vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <p
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "#C4622D",
+                    margin: "28px 0 10px",
+                  }}
+                >
+                  Founding partner
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "clamp(1.6rem, 3vw, 2rem)",
+                    fontWeight: 600,
+                    lineHeight: 1.15,
+                    margin: "0 0 6px",
+                  }}
+                >
+                  {p.name}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "1.1rem",
+                    fontStyle: "italic",
+                    color: "#C4622D",
+                    margin: "0 0 18px",
+                  }}
+                >
+                  {p.years}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "15px",
+                    fontWeight: 300,
+                    lineHeight: 1.8,
+                    opacity: 0.82,
+                    margin: 0,
+                  }}
+                >
+                  {p.bio}
+                </p>
+              </Reveal>
+            ))}
+            <span className="gtm-partners-spark" aria-hidden="true">✦</span>
+          </div>
         </div>
       </section>
 
       <Divider />
 
-      {/* ─── HOW IT WORKS — cream ─── */}
-      <section style={{ background: "#FAF8F4", padding: "104px 24px" }}>
-        <div style={col}>
-          <p style={label}>How It Works</p>
+      {/* WHAT WE BUILD */}
+      <section style={{ background: "#1C1208", padding: "112px 24px" }}>
+        <div style={{ maxWidth: "980px", margin: "0 auto" }}>
+          <p style={label}>What we&apos;re here to build</p>
+          <p
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.9rem, 4.6vw, 3rem)",
+              fontWeight: 500,
+              color: "#FAF8F4",
+              lineHeight: 1.15,
+              maxWidth: "720px",
+              margin: "0 0 64px",
+            }}
+          >
+            B2B selling can be built like anything else.{" "}
+            <em style={{ color: "#C4622D", fontWeight: 400 }}>That&apos;s what we do.</em>
+          </p>
 
-          <div className="session-list">
-            {sessions.map(({ n, title }, i) => (
-              <div
-                key={n}
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: "24px",
-                  padding: "28px 0",
-                  borderBottom:
-                    i < sessions.length - 1
-                      ? "1px solid rgba(28,18,8,0.08)"
-                      : "none",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    color: "#C4622D",
-                    letterSpacing: "0.1em",
-                    flexShrink: 0,
-                    minWidth: "28px",
-                  }}
-                >
-                  {n}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "clamp(1.15rem, 2.5vw, 1.35rem)",
-                    fontWeight: 500,
-                    color: "#1C1208",
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {title}
-                </span>
+          <div className="gtm-build-grid">
+            {builds.map((b, i) => (
+              <div key={b.title} className="gtm-build">
+                <span className="gtm-build-n">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <p
+                    style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: "clamp(1.15rem, 2.2vw, 1.3rem)",
+                      fontWeight: 500,
+                      color: "#FAF8F4",
+                      lineHeight: 1.3,
+                      margin: "0 0 6px",
+                    }}
+                  >
+                    {b.title}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: "14px",
+                      fontWeight: 300,
+                      color: "#FAF8F4",
+                      opacity: 0.6,
+                      lineHeight: 1.6,
+                      margin: 0,
+                    }}
+                  >
+                    {b.line}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
 
           <p
             style={{
-              ...body,
-              marginTop: "48px",
-              paddingTop: "40px",
-              borderTop: "1px solid rgba(28,18,8,0.08)",
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.1rem, 2.4vw, 1.35rem)",
+              fontStyle: "italic",
+              color: "#C4622D",
+              lineHeight: 1.5,
+              margin: "56px 0 0",
+              maxWidth: "640px",
             }}
           >
-            Sessions can be topped up. Engagements grow with the business.
+            Not a menu. Discovery picks the one or two costing you the most deals.
           </p>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section style={{ background: "#FAF8F4", padding: "112px 24px 120px" }}>
+        <div style={{ maxWidth: "1040px", margin: "0 auto" }}>
+          <p style={label}>How it works</p>
+          <p
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.9rem, 4.6vw, 3rem)",
+              fontWeight: 500,
+              lineHeight: 1.15,
+              maxWidth: "760px",
+              margin: "0 0 64px",
+            }}
+          >
+            We start with Discovery.{" "}
+            <em style={{ color: "#C4622D", fontWeight: 400 }}>What we find shapes the rest.</em>
+          </p>
+
+          {/* Discovery gate */}
+          <Reveal className="gtm-discovery">
+            <div className="gtm-discovery-head">
+              <p
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: "clamp(2.2rem, 5vw, 3.2rem)",
+                  fontWeight: 700,
+                  color: "#FAF8F4",
+                  lineHeight: 1,
+                  margin: 0,
+                }}
+              >
+                Discovery
+              </p>
+              <div className="gtm-chips">
+                <span>2 weeks</span>
+                <span>Fixed price</span>
+                <span>3 to 4 hours of your time</span>
+              </div>
+            </div>
+            <div className="gtm-discovery-body">
+              <p
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: "clamp(1.15rem, 2.4vw, 1.35rem)",
+                  color: "#FAF8F4",
+                  lineHeight: 1.55,
+                  margin: 0,
+                }}
+              >
+                Two weeks inside your business to uncover what&apos;s slowing you down. Then you
+                decide, with our findings and recommendations in hand.
+              </p>
+              <div>
+                <p className="gtm-mini-label">How</p>
+                <p className="gtm-dark-copy">
+                  We talk to you first, then to your team. We check what we hear against
+                  best-in-class practice, your pipeline and your numbers.
+                </p>
+                <p className="gtm-mini-label" style={{ marginTop: "24px" }}>What you get</p>
+                <p className="gtm-dark-copy">
+                  Two pages and a debrief meeting. The problems costing you the most deals, in
+                  order, and what to do about each in the next 90 to 180 days.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Fan-out */}
+          <div className="gtm-fan">
+            <span className="gtm-fan-stem" aria-hidden="true" />
+            <p className="gtm-fan-label">Then, if you want us to stay</p>
+            <span className="gtm-fan-stem gtm-fan-stem-m" aria-hidden="true" />
+            <span className="gtm-fan-bar" aria-hidden="true" />
+          </div>
+
+          <div className="gtm-paths">
+            {paths.map((p, i) => (
+              <Reveal key={p.name} delay={i * 120} className="gtm-path">
+                <p
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "clamp(1.9rem, 3.4vw, 2.3rem)",
+                    fontStyle: "italic",
+                    fontWeight: 500,
+                    color: "#C4622D",
+                    lineHeight: 1,
+                    margin: "0 0 14px",
+                  }}
+                >
+                  {p.name}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 500,
+                    lineHeight: 1.5,
+                    margin: "0 0 4px",
+                  }}
+                >
+                  {p.what}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    opacity: 0.5,
+                    margin: "0 0 20px",
+                  }}
+                >
+                  {p.weeks}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "15px",
+                    fontWeight: 300,
+                    lineHeight: 1.75,
+                    opacity: 0.82,
+                    margin: 0,
+                  }}
+                >
+                  {p.body}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="gtm-footnotes">
+            <p>Daily, hourly or per-deliverable pricing. Scoped and agreed before we start.</p>
+            <p>These are example paths. If Discovery points somewhere else, we scope that instead.</p>
+          </div>
         </div>
       </section>
 
       <SparkDivider bg="#FAF8F4" />
 
-      {/* ─── CTA BAND — dark ─── */}
-      <section
-        style={{
-          background: "#1C1208",
-          padding: "104px 24px",
-          textAlign: "center",
-        }}
-      >
+      {/* WHAT THIS IS NOT */}
+      <section style={{ background: "#0A0A0A", padding: "104px 24px" }}>
+        <div style={{ maxWidth: "860px", margin: "0 auto" }}>
+          <p style={label}>What this is not</p>
+          <StrikethroughItems />
+        </div>
+      </section>
+
+      <Divider />
+
+      {/* CTA */}
+      <section style={{ background: "#1C1208", padding: "112px 24px", textAlign: "center" }}>
+        <span className="gtm-duo-faces gtm-duo-faces-lg" aria-hidden="true">
+          <Image src="/images/gtm-genco.jpg" alt="" width={64} height={64} />
+          <Image src="/images/gtm-emir.jpg" alt="" width={64} height={64} />
+        </span>
         <p
           style={{
             fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(1.6rem, 4.5vw, 2.6rem)",
+            fontSize: "clamp(2rem, 5vw, 3rem)",
             fontWeight: 500,
             color: "#FAF8F4",
-            lineHeight: 1.3,
-            maxWidth: "600px",
-            margin: "0 auto 20px",
+            lineHeight: 1.2,
+            maxWidth: "640px",
+            margin: "36px auto 20px",
           }}
         >
-          Engagements are tailored.
+          Tell us how you <em style={{ color: "#C4622D", fontWeight: 400 }}>sell today.</em>
         </p>
         <p
           style={{
@@ -622,13 +637,14 @@ export default function GrowthPartnership() {
             color: "#FAF8F4",
             opacity: 0.6,
             lineHeight: 1.7,
-            marginBottom: "48px",
+            margin: "0 auto 48px",
+            maxWidth: "480px",
           }}
         >
-          Get in touch and we will find the right shape.
+          The first conversation is free. Write to both of us and we&apos;ll find a time.
         </p>
-        <Link
-          href="/contact"
+        <a
+          href={MAILTO}
           style={{
             display: "inline-block",
             background: "#C4622D",
@@ -638,19 +654,32 @@ export default function GrowthPartnership() {
             fontSize: "14px",
             letterSpacing: "0.08em",
             textDecoration: "none",
-            padding: "20px 48px",
+            padding: "20px 44px",
             borderRadius: "2px",
           }}
         >
-          Contact Genco →
-        </Link>
-        <div style={{ marginTop: "32px" }}>
+          Email Genco &amp; Emir →
+        </a>
+        <p
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "13px",
+            color: "#FAF8F4",
+            opacity: 0.5,
+            margin: "24px 0 0",
+          }}
+        >
+          or use the{" "}
+          <Link href="/contact" style={{ color: "#FAF8F4", textDecorationColor: "#C4622D", textUnderlineOffset: "3px" }}>
+            contact form
+          </Link>
+        </p>
+        <div style={{ marginTop: "40px" }}>
           <Link
             href="/"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "13px",
-              fontWeight: 400,
               color: "#FAF8F4",
               opacity: 0.4,
               textDecoration: "none",

@@ -104,3 +104,255 @@ body {
   opacity: 0.8 !important;
   color: #C4622D !important;
 }
+
+/* ───────── Growth Partnership · Leadership Spark GTM ───────── */
+
+/* Hero partner chip */
+.gtm-duo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 20px 8px 8px;
+  border: 1px solid rgba(250, 248, 244, 0.16);
+  border-radius: 999px;
+  color: #FAF8F4;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  transition: border-color 0.3s ease, opacity 0.3s ease;
+}
+.gtm-duo:hover { border-color: #C4622D; opacity: 1; }
+.gtm-duo-faces { display: inline-flex; }
+.gtm-duo-faces img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #0A0A0A;
+  object-fit: cover;
+}
+.gtm-duo-faces img + img { margin-left: -12px; }
+.gtm-duo-faces-lg { justify-content: center; }
+.gtm-duo-faces-lg img { width: 64px; height: 64px; border-color: #1C1208; }
+.gtm-duo-faces-lg img + img { margin-left: -16px; }
+
+/* Stats */
+.gtm-stat {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 56px 0;
+}
+@media (min-width: 760px) {
+  .gtm-stat {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 56px;
+    align-items: end;
+  }
+}
+
+/* Sound familiar */
+.gtm-pain-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: rgba(196, 98, 45, 0.3);
+  border-top: 1px solid rgba(196, 98, 45, 0.3);
+  border-bottom: 1px solid rgba(196, 98, 45, 0.3);
+}
+.gtm-pain { background: #0A0A0A; padding: 44px 0; }
+@media (min-width: 720px) {
+  .gtm-pain-grid { grid-template-columns: 1fr 1fr; }
+  .gtm-pain { padding: 48px 48px 52px 0; }
+  .gtm-pain:nth-child(2n) { padding-left: 48px; padding-right: 0; }
+}
+
+/* Partners */
+.gtm-partners {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 72px;
+}
+.gtm-portrait {
+  position: relative;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 14px 14px 0 rgba(196, 98, 45, 0.18);
+}
+.gtm-portrait img { transition: transform 1.2s ease; }
+.gtm-partner:hover .gtm-portrait img { transform: scale(1.03); }
+.gtm-partners-spark { display: none; }
+@media (min-width: 760px) {
+  .gtm-partners { grid-template-columns: 1fr 1fr; gap: 96px; }
+  .gtm-partner:nth-child(2) { margin-top: 96px; }
+  .gtm-partners-spark {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 34%;
+    transform: translate(-50%, -50%);
+    color: #C4622D;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px;
+  }
+}
+
+/* What we build */
+.gtm-build-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 64px;
+  border-top: 1px solid rgba(250, 248, 244, 0.12);
+}
+.gtm-build {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(250, 248, 244, 0.12);
+  transition: padding-left 0.3s ease;
+}
+.gtm-build:hover { padding-left: 8px; }
+.gtm-build-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #C4622D;
+  min-width: 24px;
+}
+@media (min-width: 760px) {
+  .gtm-build-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Discovery gate */
+.gtm-discovery {
+  background: #1C1208;
+  border-radius: 2px;
+  padding: 48px 28px;
+  border-top: 3px solid #C4622D;
+}
+.gtm-discovery-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 36px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid rgba(250, 248, 244, 0.12);
+}
+.gtm-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.gtm-chips span {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FAF8F4;
+  border: 1px solid rgba(196, 98, 45, 0.6);
+  border-radius: 999px;
+  padding: 8px 14px;
+}
+.gtm-discovery-body { display: grid; grid-template-columns: 1fr; gap: 36px; }
+.gtm-mini-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C4622D;
+  margin: 0 0 8px;
+}
+.gtm-dark-copy {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #FAF8F4;
+  opacity: 0.75;
+  margin: 0;
+}
+@media (min-width: 760px) {
+  .gtm-discovery { padding: 56px 56px 60px; }
+  .gtm-discovery-body { grid-template-columns: 1.1fr 1fr; gap: 64px; }
+}
+
+/* Fan-out from Discovery to the three paths */
+.gtm-fan {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 28px;
+}
+.gtm-fan-stem {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: rgba(196, 98, 45, 0.6);
+}
+.gtm-fan-bar { display: none; }
+.gtm-fan-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #C4622D;
+  margin: 12px 0 12px -28px;
+}
+.gtm-paths { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.gtm-path {
+  background: #F5F0E8;
+  border-top: 1px solid rgba(196, 98, 45, 0.5);
+  padding: 36px 28px 40px;
+  border-radius: 2px;
+}
+@media (min-width: 760px) {
+  .gtm-fan { align-items: center; padding-left: 0; }
+  .gtm-fan-stem-m { display: none; }
+  .gtm-fan-label { margin: 14px 0; }
+  .gtm-fan-bar {
+    display: block;
+    position: relative;
+    align-self: stretch;
+    margin: 0 calc((100% - 48px) / 6);
+    height: 40px;
+    border: 1px solid rgba(196, 98, 45, 0.6);
+    border-bottom: none;
+  }
+  .gtm-fan-bar::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(196, 98, 45, 0.6);
+  }
+  .gtm-path { border-top: 3px solid #C4622D; }
+  .gtm-paths { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+}
+
+.gtm-footnotes {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(28, 18, 8, 0.08);
+  display: grid;
+  gap: 10px;
+}
+.gtm-footnotes p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #1C1208;
+  opacity: 0.7;
+  margin: 0;
+}
+@media (min-width: 760px) {
+  .gtm-footnotes { grid-template-columns: 1fr 1fr; gap: 48px; }
+}

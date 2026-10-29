@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const items = [
-  "A sales training day.",
-  "A slide deck with a framework you will never use.",
+  "A ready-made playbook.",
+  "A prescription before we have dug in.",
   "Someone who has only ever read about selling.",
 ];
 

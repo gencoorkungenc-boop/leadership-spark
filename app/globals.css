@@ -137,19 +137,23 @@ body {
 .gtm-duo-faces-lg img { width: 64px; height: 64px; border-color: #1C1208; }
 .gtm-duo-faces-lg img + img { margin-left: -16px; }
 
-/* Stats */
-.gtm-stat {
+/* Buyer section: intro left, compact stats right with a separator */
+.gtm-buyer {
+  max-width: 1040px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  padding: 56px 0;
+  gap: 48px;
 }
-@media (min-width: 760px) {
-  .gtm-stat {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 56px;
-    align-items: end;
-  }
+.gtm-buyer-stats {
+  display: grid;
+  gap: 36px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(196, 98, 45, 0.4);
+}
+@media (min-width: 860px) {
+  .gtm-buyer { grid-template-columns: 1.35fr 1fr; gap: 64px; align-items: center; }
+  .gtm-buyer-stats { padding: 8px 0 8px 48px; border-top: none; border-left: 1px solid rgba(196, 98, 45, 0.4); }
 }
 
 /* Sound familiar */

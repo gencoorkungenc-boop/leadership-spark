@@ -180,17 +180,16 @@ export default function GrowthPartnership() {
       </section>
 
       {/* THE BUYER CHANGED */}
-      <section style={{ background: "#F5F0E8", padding: "112px 24px 72px" }}>
-        <div style={{ maxWidth: "1040px", margin: "0 auto" }}>
+      <section style={{ background: "#F5F0E8", padding: "112px 24px" }}>
+        <div className="gtm-buyer">
           <Reveal>
             <p
               style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(2rem, 5.4vw, 3.4rem)",
+                fontSize: "clamp(2rem, 4.6vw, 3.2rem)",
                 fontWeight: 500,
                 lineHeight: 1.12,
                 letterSpacing: "-0.01em",
-                maxWidth: "820px",
                 margin: "0 0 24px",
               }}
             >
@@ -204,8 +203,8 @@ export default function GrowthPartnership() {
                 fontWeight: 300,
                 lineHeight: 1.85,
                 opacity: 0.8,
-                maxWidth: "560px",
-                margin: "0 0 32px",
+                maxWidth: "520px",
+                margin: 0,
               }}
             >
               Selling to companies got complicated on every level. The product earns the meeting.
@@ -213,20 +212,21 @@ export default function GrowthPartnership() {
             </p>
           </Reveal>
 
-          <StatLine
-            target={2}
-            suffix="x"
-            description="Won deals have twice as many buyer-side contacts as lost ones."
-            source="Gong Labs · 1.8 million deals · 2025"
-          />
-          <div style={{ height: "1px", background: "#C4622D", opacity: 0.3 }} />
-          <StatLine
-            target={6.2}
-            decimals={1}
-            suffix="months"
-            description="How long a new sales hire takes to ramp, the longest on record. Only 48% of reps hit quota."
-            source="The Bridge Group · 2026"
-          />
+          <div className="gtm-buyer-stats">
+            <StatLine
+              target={86}
+              suffix="%"
+              description="of B2B purchases stall during the buying process."
+              source="Forrester · 16,000+ buyers · 2024"
+            />
+            <StatLine
+              target={6.2}
+              decimals={1}
+              suffix="months"
+              description="for a new sales hire to ramp, the longest on record. Only 48% hit quota."
+              source="The Bridge Group · 2026"
+            />
+          </div>
         </div>
       </section>
 

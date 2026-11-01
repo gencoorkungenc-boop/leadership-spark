@@ -44,11 +44,11 @@ export default function StatLine({ target, decimals = 0, suffix, description, so
       <div
         style={{
           fontFamily: "'Playfair Display', serif",
-          fontSize: "clamp(5.5rem, 16vw, 10rem)",
+          fontSize: "clamp(2.8rem, 6vw, 3.4rem)",
           fontWeight: 700,
-          lineHeight: 0.85,
+          lineHeight: 1,
           color: "#1C1208",
-          letterSpacing: "-0.04em",
+          letterSpacing: "-0.02em",
           fontVariantNumeric: "tabular-nums",
           whiteSpace: "nowrap",
         }}
@@ -57,7 +57,7 @@ export default function StatLine({ target, decimals = 0, suffix, description, so
         <span
           style={{
             color: "#C4622D",
-            fontSize: "0.38em",
+            fontSize: "0.45em",
             fontStyle: "italic",
             fontWeight: 400,
             letterSpacing: 0,
@@ -70,12 +70,13 @@ export default function StatLine({ target, decimals = 0, suffix, description, so
       <div>
         <p
           style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(1.1rem, 2.4vw, 1.3rem)",
-            fontWeight: 400,
-            lineHeight: 1.55,
+            fontSize: "15px",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 300,
+            lineHeight: 1.65,
             color: "#1C1208",
-            margin: "0 0 16px",
+            opacity: 0.85,
+            margin: "10px 0 10px",
           }}
         >
           {description}

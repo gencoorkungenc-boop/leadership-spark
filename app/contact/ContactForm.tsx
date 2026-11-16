@@ -57,6 +57,11 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, pathway, message }),
       });
+      if (res.ok) {
+        // Counted in Google Analytics only when the visitor accepted cookies.
+        const w = window as Window & { gtag?: (...args: unknown[]) => void };
+        w.gtag?.("event", "generate_lead", { form: "contact", pathway: pathway || "not-sure" });
+      }
       setStatus(res.ok ? "sent" : "error");
     } catch {
       setStatus("error");
@@ -169,7 +174,7 @@ export default function ContactForm() {
 
       {status === "error" && (
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: TERRA, margin: 0 }}>
-          Something went wrong. Please try again or email gencoorkungenc@gmail.com directly.
+          Something went wrong. Please try again or email genco@leadershipspark.co directly.
         </p>
       )}
 

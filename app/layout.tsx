@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import CookieBanner from "../components/CookieBanner";
 import "./globals.css";
 
@@ -36,20 +35,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" style={{ height: "auto", minHeight: "unset" }}>
-      <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-ZRPMM96MKB"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-ZRPMM96MKB');
-          `}
-        </Script>
-      </head>
       <body style={{ height: "auto", minHeight: "unset", overflowX: "hidden", background: "#FAF8F4" }}>
         {children}
         <CookieBanner />

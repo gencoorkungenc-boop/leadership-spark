@@ -27,7 +27,7 @@ const sections = [
       },
       {
         label: "Analytics",
-        text: "This site uses Google Analytics 4 to understand how visitors use the website. This includes pages visited, time spent on the site, general location at country level, device type and how you arrived at the site. Google Analytics uses cookies to collect this data. You can accept or decline cookies using the banner shown on your first visit.",
+        text: "This site uses Google Analytics 4 to understand how visitors use the website. This includes pages visited, time spent on the site, general location at country level, device type and how you arrived at the site. Google Analytics uses cookies to collect this data. You can accept or decline cookies using the banner shown on your first visit, and change your choice later under Cookie settings.",
       },
     ],
   },
@@ -45,7 +45,7 @@ const sections = [
   },
   {
     heading: "Cookies",
-    body: "This site uses one category of cookies: analytics cookies placed by Google Analytics 4. These are only placed if you accept cookies via the banner on your first visit. You can withdraw consent at any time by clearing your browser cookies.",
+    body: "This site uses one category of cookies: analytics cookies placed by Google Analytics 4. These are only placed if you accept cookies via the banner on your first visit. You can change or withdraw your consent at any time using the Cookie settings link at the bottom of every page.",
   },
   {
     heading: "Third Party Services",

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CookieSettingsLink from "../components/CookieSettingsLink";
 
 
 const LinkedInIcon = () => (
@@ -43,6 +44,16 @@ export default function SiteFooter() {
         >
           Privacy Policy
         </Link>
+        <CookieSettingsLink
+          style={{
+            fontSize: "11px",
+            color: "#FAF8F4",
+            opacity: 0.3,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            fontFamily: "inherit",
+          }}
+        />
         <Link
           href="https://www.linkedin.com/in/gencoorkun/"
           target="_blank"

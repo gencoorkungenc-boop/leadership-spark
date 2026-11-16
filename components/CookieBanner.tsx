@@ -3,27 +3,84 @@
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "ls-cookies-accepted";
+const GA_ID = "G-ZRPMM96MKB";
+export const OPEN_COOKIE_SETTINGS = "ls-open-cookie-settings";
+
+type GtagWindow = Window & {
+  dataLayer?: unknown[];
+  gtag?: (...args: unknown[]) => void;
+  [key: string]: unknown;
+};
+
+// Google Analytics is loaded only after the visitor clicks Accept.
+// Nothing from Google is requested before that (GDPR / ePrivacy).
+function loadAnalytics() {
+  const w = window as unknown as GtagWindow;
+  w[`ga-disable-${GA_ID}`] = false;
+  if (w.gtag) return;
+  w.dataLayer = w.dataLayer || [];
+  w.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    w.dataLayer!.push(arguments);
+  };
+  w.gtag("js", new Date());
+  w.gtag("config", GA_ID);
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(script);
+}
+
+// On withdrawal: stop Google Analytics and remove its cookies.
+function stopAnalytics() {
+  const w = window as unknown as GtagWindow;
+  w[`ga-disable-${GA_ID}`] = true;
+  const host = window.location.hostname.replace(/^www\./, "");
+  document.cookie.split(";").forEach((c) => {
+    const name = c.split("=")[0].trim();
+    if (name === "_ga" || name.startsWith("_ga_")) {
+      for (const domain of ["", `; domain=.${host}`, `; domain=${window.location.hostname}`]) {
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain}`;
+      }
+    }
+  });
+}
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) {
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem(STORAGE_KEY);
+    } catch {}
+    if (stored === "true") {
+      loadAnalytics();
+    } else if (!stored) {
       // Small delay so the slide-up feels intentional, not jarring
       setTimeout(() => setVisible(true), 800);
     }
     setMounted(true);
+
+    const open = () => setVisible(true);
+    window.addEventListener(OPEN_COOKIE_SETTINGS, open);
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS, open);
   }, []);
 
   function accept() {
-    localStorage.setItem(STORAGE_KEY, "true");
+    try {
+      localStorage.setItem(STORAGE_KEY, "true");
+    } catch {}
+    loadAnalytics();
     setVisible(false);
   }
 
   function decline() {
-    localStorage.setItem(STORAGE_KEY, "false");
+    try {
+      localStorage.setItem(STORAGE_KEY, "false");
+    } catch {}
+    stopAnalytics();
     setVisible(false);
   }
 
@@ -69,7 +126,7 @@ export default function CookieBanner() {
           }}
         >
           <span style={{ color: "#C4622D", marginRight: "8px", fontFamily: "'Playfair Display', serif" }}>✦</span>
-          This site uses cookies to understand how visitors use it. No personal data is shared with third parties.
+          This site uses Google Analytics cookies to understand how visitors use it, only if you accept. You can change your choice any time under Cookie settings.
         </p>
         <div style={{ display: "flex", gap: "12px", flexShrink: 0 }}>
           <button

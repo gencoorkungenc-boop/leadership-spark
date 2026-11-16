@@ -9,7 +9,7 @@ import StatLine from "./StatLine";
 import Reveal from "./Reveal";
 
 export const metadata: Metadata = {
-  title: "The Growth Partnership | Leadership Spark",
+  title: "The Growth Partnership — Leadership Spark",
   description:
     "Leadership Spark GTM. Genco Orkun Genc and Emir Ergun build the B2B selling engine inside your company, with you and your team. It starts with a two-week Discovery.",
 };
